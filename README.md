@@ -1,25 +1,30 @@
 <!-- Your Project title, make it sound catchy! -->
 
-# Project title
+# Hidden Markov Models for the discovery of behavioural states
 
 <!-- Provide a short description to your project -->
 
 ## Description
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae pulvinar
-mauris. Praesent sollicitudin rutrum mauris sed congue. Donec vel orci elit.
-Phasellus luctus sodales elementum. Donec lacinia semper lorem, volutpat
-molestie arcu bibendum mollis. Nulla nec massa vitae sapien varius vulputate
-vel vitae ex. Curabitur convallis iaculis elit at faucibus. Sed eget facilisis
-orci, ut consequat neque.
+This is an exemplar project to help you understand the concepts behind the Hidden Markov Model (HMM), how to implement 
+one with the pythoin package hmmlearn, and finally how to explore the decoded data. 
+
+HMM's are widely used in multiple fields, including biology, natural language processing, and finance as a predictor
+of future states in a sequence. However, here we will be utilising the hidden model states to create a hypothesied
+internal behavioural architecture.
+
+This is all a part of the ReCoDE Project at Imperial College London
 
 <!-- What should the students going through your exemplar learn -->
 
 ## Learning Outcomes
 
-- Skill 1
-- Skill 2
-- Skill 3
+Only a basic understanding of python is needed prior to beginning, with the tuorials walking you through the 
+use of numpy and pandas to curate data for use with the hmmlearn package.
+
+- 1. Understanding the core concepts of HMMs
+- 2. Curating data and training/validating your own HMM
+- 3. Visualing and understanding your decoded data
 
 <!-- How long should they spend reading and practising using your Code.
 Provide your best estimate -->
