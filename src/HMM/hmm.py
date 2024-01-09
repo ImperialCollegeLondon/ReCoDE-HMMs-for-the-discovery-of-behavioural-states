@@ -1,17 +1,25 @@
 import pandas as pd
 import numpy as np 
+import pickle
+
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 from tabulate import tabulate
 from hmmlearn import hmm
 from math import floor, ceil
+from functools import partial
+
+from misc import bin_data
+from hmm_functions import hmm_pct_state
 
 class HMM(pd.DataFrame):
 
-    @property
-    def _constructor(self):
-        return behavpy._internal_constructor(self.__class__)
+    # @property
+    # def _constructor(self):
+    #     return HMM._internal_constructor(self.__class__)
 
-    def __init__(self, dataindex= None, columns=None, dtype=None, copy=True):
+    def __init__(self, data, index= None, columns=None, dtype=None, copy=True):
         super(HMM, self).__init__(data=data,
                                         index=index,
                                         columns=columns,
@@ -19,10 +27,16 @@ class HMM(pd.DataFrame):
                                         copy=copy)
 
     @staticmethod
-    def _hmm_decode(d, h, b, var, fun, return_type = 'array'):
+    def _hmm_decode(d, h, b, var, fun, t= 't', return_type = 'array'):
 
         # bin the data to 60 second intervals with a selected column and function on that column
-        bin_df = d.bin_time(var, b, function = fun)
+        bin_df = d.groupby('id', group_keys = False).apply(partial(bin_data,
+                                                                                                column = var, 
+                                                                                                bin_column = t,
+                                                                                                function = fun, 
+                                                                                                bin_secs = b
+        ))
+
         gb = bin_df.groupby(bin_df.index)[f'{var}_{fun}'].apply(list)
         time_list = bin_df.groupby(bin_df.index)['t_bin'].apply(list)
 
@@ -51,6 +65,9 @@ class HMM(pd.DataFrame):
         if return_type == 'table':
             df.columns = ['id', 'bin', 'state', var]
             return df
+
+    @staticmethod
+
 
     @staticmethod
     def _hmm_table(start_prob, trans_prob, emission_prob, state_names, observable_names):
@@ -110,7 +127,7 @@ class HMM(pd.DataFrame):
                 verbose = (bool, optional). An argument for hmmlearn, whether per-iteration convergence reports are printed to terminal. Default is False.
 
         returns: 
-            A trained hmmlearn HMM Multinomial object
+            A trained hmmlearn categoricalHMM object
         """
         
         if file_name.endswith('.pkl') is False:
@@ -120,8 +137,9 @@ class HMM(pd.DataFrame):
         n_obs = len(observables)
 
         hmm_df = self.copy(deep = True)
+        hmm_df.reset_index(inplace=True)
 
-        gb = data.groupby('id')[var_column].apply(np.array)
+        gb = hmm_df.groupby('id')[var_column].apply(np.array)
 
         # split runs into test and train lists
         test_train_split = round(len(gb) * (test_size/100))
@@ -203,5 +221,73 @@ class HMM(pd.DataFrame):
                 self._hmm_table(start_prob = h.startprob_, trans_prob = h.transmat_, emission_prob = h.emissionprob_, state_names = states, observable_names = observables)
                 return h
     
+
+    def plot_hmm_overtime(self, hmm, variable, labels, colours, wrapped = False, tbin = 60, func = 'max', avg_window = 30, title = '', grids = False):
+        """
+        Creates a plot of all states overlayed with y-axis shows the liklihood of being in a sleep state and the x-axis showing time in hours.
+        The plot is generated through the plotly package
+
+        Args:
+            hmm (hmmlearn trained hmm): This should be a trained HMM Learn object with the correct hidden states and emission states for your dataset
+            @variable = string, the column heading of the variable of interest. Default is "moving"
+            @labels = list[string], the names of the different states present in the hidden markov model. If None the labels are assumed to be ['Deep sleep', 'Light sleep', 'Quiet awake', 'Full awake']
+            @colours = list[string], the name of the colours you wish to represent the different states, must be the same length as labels. If None the colours are a default for 4 states (blue and red)
+            It accepts a specific colour or an array of numbers that are acceptable to plotly
+            @wrapped = bool, if True the plot will be limited to a 24 hour day average
+            @bin = int, the time in seconds you want to bin the movement data to, default is 60 or 1 minute
+            @func = string, when binning to the above what function should be applied to the grouped data. Default is "max" as is necessary for the "moving" variable
+            @avg_window, int, the window in minutes you want the moving average to be applied to. Default is 30 mins
+        """
+
+        df = self.copy(deep = True).reset_index()
+
+        states_list, time_list = self._hmm_decode(df, hmm, tbin, variable, func)
+
+        df = pd.DataFrame()
+        for l, t in zip(states_list, time_list):
+            tdf = hmm_pct_state(l, t, list(range(len(labels))), avg_window = int((avg_window * 60)/tbin))
+            df = pd.concat([df, tdf], ignore_index = True)
+
+        if wrapped is True:
+            df['t'] = df['t'].map(lambda t: t % (60*60*24))
+
+        df['t'] = df['t'] / (60*60)
+        t_min = int(12 * floor(df.t.min() / 12))
+        t_max = int(12 * ceil(df.t.max() / 12))    
+        t_range = [t_min, t_max]  
+
+        for c, (col, n) in enumerate(zip(colours, labels)):
+
+            column = f'state_{c}'
+
+            gb_df = df.groupby('t').agg(**{
+                        'mean' : (column, 'mean'), 
+                        'SD' : (column, 'std'),
+                        'count' : (column, 'count')
+                    })
+
+            gb_df['SE'] = (1.96*gb_df['SD']) / np.sqrt(gb_df['count'])
+            gb_df['y_max'] = gb_df['mean'] + gb_df['SE']
+            gb_df['y_min'] = gb_df['mean'] - gb_df['SE']
+            gb_df = gb_df.reset_index()
+
+            plt.plot(gb_df['t'], gb_df['mean'], color = col)
+        plt.show()
+
+
     def find_best_model():
         return
+
+if __name__ == "__main__":
+    df = pd.read_csv('/home/lab/Desktop/ReCoDE-HMMs-for-the-discovery-of-behavioural-states/data/training_data_small.zip', index_col = 'id')
+    h = pickle.load(open("/home/lab/Desktop/ReCoDE-HMMs-for-the-discovery-of-behavioural-states/data/test_hmm.pkl", "rb"))
+    hdf = HMM(data = df)
+    hdf['moving'] = np.where(hdf['moving'] == True, 1, 0)
+    hdf.hmm_train(states =  ['deep sleep', 'light sleep', 'quiet awake', 'active awake'], observables = ['immobile', 'mobile'], var_column = 'moving', file_name = 'test_h.pkl', trans_probs = None, emiss_probs = None, start_probs = None, iterations = 2, hmm_iterations = 10, tol = 50, t_column = 't', bin_time = 60, test_size = 10, verbose = True)
+
+if __name__ == "__main__":
+    df = pd.read_csv('/home/lab/Desktop/ReCoDE-HMMs-for-the-discovery-of-behavioural-states/data/training_data_small.zip', index_col = 'id')
+    h = pickle.load(open("/home/lab/Desktop/ReCoDE-HMMs-for-the-discovery-of-behavioural-states/data/test_hmm.pkl", "rb"))
+    hdf = HMM(data = df)
+    hdf['moving'] = np.where(hdf['moving'] == True, 1, 0)
+    hdf.plot_hmm_overtime(h, variable = 'moving', labels = ['deep sleep', 'light sleep', 'quiet awake', 'active awake'], colours = ['darkblue', 'lightblue', 'orange', 'red'], wrapped = True)
