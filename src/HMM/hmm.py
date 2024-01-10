@@ -15,10 +15,6 @@ from hmm_functions import hmm_pct_state
 
 class HMM(pd.DataFrame):
 
-    # @property
-    # def _constructor(self):
-    #     return HMM._internal_constructor(self.__class__)
-
     def __init__(self, data, index= None, columns=None, dtype=None, copy=True):
         super(HMM, self).__init__(data=data,
                                         index=index,
@@ -31,10 +27,10 @@ class HMM(pd.DataFrame):
 
         # bin the data to 60 second intervals with a selected column and function on that column
         bin_df = d.groupby('id', group_keys = False).apply(partial(bin_data,
-                                                                                                column = var, 
-                                                                                                bin_column = t,
-                                                                                                function = fun, 
-                                                                                                bin_secs = b
+                                                                    column = var, 
+                                                                    bin_column = t,
+                                                                    function = fun, 
+                                                                    bin_secs = b
         ))
 
         gb = bin_df.groupby(bin_df.index)[f'{var}_{fun}'].apply(list)
@@ -65,9 +61,6 @@ class HMM(pd.DataFrame):
         if return_type == 'table':
             df.columns = ['id', 'bin', 'state', var]
             return df
-
-    @staticmethod
-
 
     @staticmethod
     def _hmm_table(start_prob, trans_prob, emission_prob, state_names, observable_names):
@@ -222,7 +215,7 @@ class HMM(pd.DataFrame):
                 return h
     
 
-    def plot_hmm_overtime(self, hmm, variable, labels, colours, wrapped = False, tbin = 60, func = 'max', avg_window = 30, title = '', grids = False):
+    def plot_hmm_overtime(self, hmm, variable, labels, colours, wrapped = False, tbin = 60, func = 'max', avg_window = 30, title = ''):
         """
         Creates a plot of all states overlayed with y-axis shows the liklihood of being in a sleep state and the x-axis showing time in hours.
         The plot is generated through the plotly package
@@ -234,7 +227,7 @@ class HMM(pd.DataFrame):
             @colours = list[string], the name of the colours you wish to represent the different states, must be the same length as labels. If None the colours are a default for 4 states (blue and red)
             It accepts a specific colour or an array of numbers that are acceptable to plotly
             @wrapped = bool, if True the plot will be limited to a 24 hour day average
-            @bin = int, the time in seconds you want to bin the movement data to, default is 60 or 1 minute
+            @tbin = int, the time in seconds you want to bin the movement data to, default is 60 or 1 minute
             @func = string, when binning to the above what function should be applied to the grouped data. Default is "max" as is necessary for the "moving" variable
             @avg_window, int, the window in minutes you want the moving average to be applied to. Default is 30 mins
         """
@@ -272,7 +265,8 @@ class HMM(pd.DataFrame):
             gb_df = gb_df.reset_index()
 
             plt.plot(gb_df['t'], gb_df['mean'], color = col)
-        plt.show()
+        
+        return plt
 
 
     def find_best_model():
