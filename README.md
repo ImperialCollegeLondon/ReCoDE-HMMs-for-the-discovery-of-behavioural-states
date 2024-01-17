@@ -26,75 +26,66 @@ use of numpy and pandas to curate data for use with the hmmlearn package.
 - 2. Curating data and training/validating your own HMM
 - 3. Visualing and understanding your decoded data
 
-<!-- How long should they spend reading and practising using your Code.
-Provide your best estimate -->
-
 | Task       | Time    |
 | ---------- | ------- |
-| Reading    | 3 hours |
-| Practising | 3 hours |
+| Reading    | TBD hours |
+| Practising | TBD hours |
 
 ## Requirements
 
-<!--
-If your exemplar requires students to have a background knowledge of something
-especially this is the place to mention that.
-
-List any resources you would recommend to get the students started.
-
-If there is an existing exemplar in the ReCoDE repositories link to that.
--->
-
 ### Academic
 
-<!-- List the system requirements and how to obtain them, that can be as simple
-as adding a hyperlink to as detailed as writting step-by-step instructions.
-How detailed the instructions should be will vary on a case-by-case basis.
+A basic knowledge of python is needed.
 
-Here are some examples:
+The tutorial will be based in numpy and pandas, two data science pacakages for working with and manipulating data.
+However, previou knowledge will not be neccesary with all steps explained and options to explore parts further
 
-- 50 GB of disk space to hold Dataset X
-- Anaconda
-- Python 3.11 or newer
-- Access to the HPC
-- PETSc v3.16
-- gfortran compiler
-- Paraview
--->
+No prior knowledge of HMMs is needed or deep understanding of mathmatical modelling. However, if you do want to read more about 
+HMMs I found these resources very useful when starting out:
+Hidden Markov Models - Speech and Language Processing  -> (https://web.stanford.edu/~jurafsky/slp3/A.pdf)
+
 
 ### System
 
-<!-- Instructions on how the student should start going through the exemplar.
+| Program                  | Version                  |
+| ------------------------ | ------------------------ |
+| Python                   | >= 3.11.0                |
 
-Structure this section as you see fit but try to be clear, concise and accurate
-when writing your instructions.
 
-For example:
-Start by watching the introduction video,
-then study Jupyter notebooks 1-3 in the `intro` folder
-and attempt to complete exercise 1a and 1b.
+### Dependencies
 
-Once done, start going through through the PDF in the `main` folder.
-By the end of it you should be able to solve exercises 2 to 4.
+| Package                  | Version                  |
+| ------------------------ | ------------------------ |
+| numpy                    | >= 1.26.3                |
+| pandas                   | >= 2.1.4                 |
+| hmmlearn                 | >= 0.3.0                 |
+| jupyter                  | >= XXXXX                 |
 
-A final exercise can be found in the `final` folder.
-
-Solutions to the above can be found in `solutions`.
--->
 
 ## Getting Started
 
-<!-- An overview of the files and folder in the exemplar.
-Not all files and directories need to be listed, just the important
-sections of your project, like the learning material, the code, the tests, etc.
+### Workflow
 
-A good starting point is using the command `tree` in a terminal(Unix),
-copying its output and then removing the unimportant parts.
+The tutorial will be taught through sequential jupyter notebooks which you will clone to your local computer.
+The code will be mainly written out and executed from within the notebooks so you will get a feel for the full workflow to generate
+and test HMMs. A few parts of the code that help the code run or tidy up the plots will be imported from elsewhere in the project (here),
+there is also pre formed python class to train your HMM for use after the tutorial.
 
-You can use ellipsis (...) to suggest that there are more files or folders
-in a tree node.
+### Workstation
 
--->
+You'll need something to run and edit the code in the notebooks as we go along, this tutorial was created in [Visual Studio Code] (https://code.visualstudio.com/),
+but you can use whatever code editor you like.
+
+### Cloning the repository
+
+If you don't have it already install git to your machine, see [here] (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for details on all OS's 
+
+Once installed run the following comman in the terminal after moving to the location you want it saved
+
+```bash
+git clone https://github.com/ImperialCollegeLondon/ReCoDE-HMMs-for-the-discovery-of-behavioural-states.git HMM_tutorial
+cd HMM_tutorial
+```
 
 ## Project Structure
 
