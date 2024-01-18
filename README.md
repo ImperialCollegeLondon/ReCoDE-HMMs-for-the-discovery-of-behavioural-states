@@ -50,6 +50,8 @@ Hidden Markov Models - Speech and Language Processing  -> (https://web.stanford.
 | Program                  | Version                  |
 | ------------------------ | ------------------------ |
 | Python                   | >= 3.11.0                |
+| Git                      | >= 2.43.0             
+
 
 
 ### Dependencies
@@ -59,6 +61,7 @@ Hidden Markov Models - Speech and Language Processing  -> (https://web.stanford.
 | numpy                    | >= 1.26.3                |
 | pandas                   | >= 2.1.4                 |
 | hmmlearn                 | >= 0.3.0                 |
+| Matplotlib               | >= XXXXX
 | jupyter                  | >= XXXXX                 |
 
 
@@ -73,19 +76,27 @@ there is also pre formed python class to train your HMM for use after the tutori
 
 ### Workstation
 
-You'll need something to run and edit the code in the notebooks as we go along, this tutorial was created in [Visual Studio Code] (https://code.visualstudio.com/),
+You'll need something to run and edit the code in the notebooks as we go along, this tutorial was created in [Visual Studio Code](https://code.visualstudio.com/),
 but you can use whatever code editor you like.
 
 ### Cloning the repository
 
-If you don't have it already install git to your machine, see [here] (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for details on all OS's 
+If you don't have it already install git to your machine, see [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for details on all OS's 
 
-Once installed run the following comman in the terminal after moving to the location you want it saved
+Once installed run the following comman in the terminal after moving to the location you want it saved. We'll then CD into the created folder.
 
 ```bash
 git clone https://github.com/ImperialCollegeLondon/ReCoDE-HMMs-for-the-discovery-of-behavioural-states.git HMM_tutorial
 cd HMM_tutorial
 ```
+
+### Setting up your environment
+
+```bash
+git clone https://github.com/ImperialCollegeLondon/ReCoDE-HMMs-for-the-discovery-of-behavioural-states.git HMM_tutorial
+cd HMM_tutorial
+```
+
 
 ## Project Structure
 
