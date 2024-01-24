@@ -89,3 +89,25 @@ def bootstrap(data, n=1000, func=np.mean):
         return(simulations[l_indx] , simulations[u_indx])
 
     return(ci(0.95))
+
+def _hmm_table(start_prob, trans_prob, emission_prob, state_names, observable_names):
+    """ 
+    Prints a formatted table of the probabilities from a hmmlearn MultinomialHMM object
+    """
+    df_s = pd.DataFrame(start_prob)
+    df_s = df_s.T
+    df_s.columns = state_names
+    print("Starting probabilty table: ")
+    print(tabulate(df_s, headers = 'keys', tablefmt = "github") + "\n")
+    print("Transition probabilty table: ")
+    df_t = pd.DataFrame(trans_prob, index = state_names, columns = state_names)
+    print(tabulate(df_t, headers = 'keys', tablefmt = "github") + "\n")
+    print("Emission probabilty table: ")
+    df_e = pd.DataFrame(emission_prob, index = state_names, columns = observable_names)
+    print(tabulate(df_e, headers = 'keys', tablefmt = "github") + "\n")
+
+def hmm_display(hmm, states, observables):
+    """
+    Prints to screen the transion probabilities for the hidden state and observables for a given hmmlearn hmm object
+    """
+    _hmm_table(start_prob = hmm.startprob_, trans_prob = hmm.transmat_, emission_prob = hmm.emissionprob_, state_names = states, observable_names = observables)
