@@ -83,7 +83,7 @@ but you can use whatever code editor you like.
 
 If you don't have it already install git to your machine, see [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for details on all OS's 
 
-Once installed run the following comman in the terminal after moving to the location you want it saved. We'll then CD into the created folder.
+Once installed run the following command in the terminal after moving to the location you want it saved. We'll then CD into the created folder.
 
 ```bash
 git clone https://github.com/ImperialCollegeLondon/ReCoDE-HMMs-for-the-discovery-of-behavioural-states.git HMM_tutorial
