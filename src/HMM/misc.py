@@ -97,7 +97,7 @@ def bootstrap(
 
 
 def _hmm_table(
-    start_prob, trans_prob, emission_prob, state_names, observable_names
+    start_prob: np.array, trans_prob: np.array, emission_prob: np.array, state_names: list, observable_names: list
 ) -> None:
     """Prints a table of the probabilities from a hmmlearn MultinomialHMM object."""
     df_s = pd.DataFrame(start_prob)
@@ -113,7 +113,7 @@ def _hmm_table(
     print(tabulate(df_e, headers="keys", tablefmt="github") + "\n")
 
 
-def hmm_display(hmm, states, observables) -> None:
+def hmm_display(hmm: hmmlearn.CategoricalHMM, states: list, observables: list) -> None:
     """Prints the transion probabilities for the hidden state and observables."""
     _hmm_table(
         start_prob=hmm.startprob_,
