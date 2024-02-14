@@ -224,7 +224,7 @@ class HMM(pd.DataFrame):
                     dtype=np.float64,
                 )
                 s_prob = np.array(
-                    [[y / sum(x) for y in x] for x in t_prob], dtype=np.float64
+                    [[y / sum(x) for y in x] for x in s_prob], dtype=np.float64
                 )
                 h.startprob_ = s_prob
 
