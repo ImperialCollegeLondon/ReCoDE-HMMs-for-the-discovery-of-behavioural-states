@@ -70,7 +70,7 @@ def get_data():
     path = PurePath(__file__)
     this_dir = path.parent
     parent_dir = str(this_dir).replace("notebooks/../src/HMM", "")
-    file = PurePath(parent_dir) / "data/training_data_small.zip"
+    file = PurePath(parent_dir) / "data/training_data.zip"
     return pd.read_csv(file)
 
 
