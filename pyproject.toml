@@ -13,7 +13,13 @@ authors = [
     { name = "Imperial College London RSE Team", email = "ict-rse-team@imperial.ac.uk" }
 ]
 requires-python = ">=3.11.6"
-dependencies = []
+dependencies = [
+    "numpy",
+    "pandas",
+    "hmmlearn",
+    "matplotlib",
+    "jupyter",
+]
 
 [project.optional-dependencies]
 dev = [
