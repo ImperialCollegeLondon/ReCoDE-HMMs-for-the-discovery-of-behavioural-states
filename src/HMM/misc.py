@@ -3,6 +3,7 @@ import numpy as np
 from math import floor, ceil
 import pandas as pd
 from pathlib import PurePath
+from tabulate import tabulate
 
 def rle(x):
     """
