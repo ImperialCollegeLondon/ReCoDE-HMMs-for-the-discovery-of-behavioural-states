@@ -19,6 +19,7 @@ dependencies = [
     "hmmlearn",
     "matplotlib",
     "jupyter",
+    "tabulate",
 ]
 
 [project.optional-dependencies]

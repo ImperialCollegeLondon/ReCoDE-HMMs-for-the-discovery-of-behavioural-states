@@ -159,18 +159,20 @@ should be regenerated so that they are in sync.
 
 ```log
 .
-├── examples
-│   ├── ex1
-│   └── ex2
-├── src
-|   ├── file1.py
-|   ├── file2.cpp
-|   ├── ...
-│   └── data
-├── app
+|
+├── data
+|   └── training_data.zip
 ├── docs
-├── main
-└── test
+├── notebooks
+|   ├── 1_Understanding_HMMs.ipynb
+|   ├── 2a_Cleaning_your_data.ipynb
+|   ├── 2b_Training.ipynb
+|   ├── 2c_Validating.ipynb
+|   └── 3_Visualising_the_results.ipynb
+└── src
+    ├── hmm_functions.py
+    ├── hmm.py
+    └── misc.py
 ```
 
 <!-- Change this to your License. Make sure you have added the file on GitHub -->

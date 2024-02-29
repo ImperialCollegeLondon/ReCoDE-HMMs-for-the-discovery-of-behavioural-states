@@ -69,6 +69,7 @@ def create_chain(states, start, length):
 
 def get_data():
     path = PurePath(__file__)
+    return path
     this_dir = path.parent
     parent_dir = str(this_dir).replace("notebooks/../src/HMM", "")
     file = PurePath(parent_dir) / "data/training_data.zip"
