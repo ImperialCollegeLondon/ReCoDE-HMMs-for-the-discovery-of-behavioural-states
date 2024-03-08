@@ -76,24 +76,24 @@ def get_data():
     return pd.read_csv(file)
 
 
-# def bin_data(data, column, bin_column, function, bin_secs):
-#     """ a method that will bin all data poits to a larger time bin and then summarise a column """
-#     index_name = data['id'].iloc[0]
+def bin_data(data, column, bin_column, function, bin_secs):
+    """ a method that will bin all data poits to a larger time bin and then summarise a column """
+    index_name = data['id'].iloc[0]
 
-#     data[bin_column] = data[bin_column].map(lambda t: bin_secs * floor(t / bin_secs))
-#     output_parse_name = f'{column}_{function}' # create new column name
+    data[bin_column] = data[bin_column].map(lambda t: bin_secs * floor(t / bin_secs))
+    output_parse_name = f'{column}_{function}' # create new column name
 
-#     bout_gb = data.groupby(bin_column).agg(**{
-#         output_parse_name : (column, function)    
-#     })
+    bout_gb = data.groupby(bin_column).agg(**{
+        output_parse_name : (column, function)    
+    })
 
-#     bin_parse_name = f'{bin_column}_bin'
-#     bout_gb.rename_axis(bin_parse_name, inplace = True)
-#     bout_gb.reset_index(level=0, inplace=True)
-#     old_index = pd.Index([index_name] * len(bout_gb.index), name = 'id')
-#     bout_gb.set_index(old_index, inplace =True)
+    bin_parse_name = f'{bin_column}_bin'
+    bout_gb.rename_axis(bin_parse_name, inplace = True)
+    bout_gb.reset_index(level=0, inplace=True)
+    old_index = pd.Index([index_name] * len(bout_gb.index), name = 'id')
+    bout_gb.set_index(old_index, inplace =True)
 
-#     return bout_gb
+    return bout_gb
 
 def bootstrap(data, n=1000, func=np.mean):
     """ 

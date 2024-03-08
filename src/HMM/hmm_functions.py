@@ -1,6 +1,6 @@
 import pandas as pd 
 import numpy as np
-from ethoscopy.misc.rle import rle
+from misc import rle
 
 def hmm_pct_transition(state_array, total_states):
     """
