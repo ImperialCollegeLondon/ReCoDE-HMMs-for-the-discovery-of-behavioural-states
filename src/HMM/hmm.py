@@ -11,7 +11,7 @@ from math import floor, ceil
 from functools import partial
 
 from misc import bin_data
-from hmm_functions import hmm_pct_state
+from hmm_plot_functions import hmm_pct_state
 
 class HMM(pd.DataFrame):
 
