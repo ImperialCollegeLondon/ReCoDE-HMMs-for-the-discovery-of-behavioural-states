@@ -18,6 +18,7 @@ dependencies = [
     "pandas",
     "hmmlearn",
     "matplotlib",
+    "seaborn",
     "jupyter",
     "tabulate",
 ]
@@ -31,7 +32,13 @@ dev = [
     "pytest",
     "pytest-cov",
     "pytest-mypy",
-    "pytest-mock"
+    "pytest-mock",
+    "mkdocs",
+    "mkdocs-include-markdown-plugin",
+    "mkdocs-jupyter",
+    "mkdocs-material",
+    "python-markdown-math"
+
 ]
 
 [tool.mypy]
