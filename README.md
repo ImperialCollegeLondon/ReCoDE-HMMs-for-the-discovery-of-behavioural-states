@@ -7,10 +7,10 @@
 ## Description
 
 This is an exemplar project to help you understand the concepts behind the Hidden Markov Model (HMM), how to implement 
-one with the pythoin package hmmlearn, and finally how to explore the decoded data. 
+one with the python package hmmlearn, and finally how to explore the decoded data. 
 
-HMM's are widely used in multiple fields, including biology, natural language processing, and finance as a predictor
-of future states in a sequence. However, here we will be utilising the hidden model states to create a hypothesied
+HMMs are widely used in multiple fields, including biology, natural language processing, and finance as a predictor
+of future states in a sequence. However, here we will be utilising the hidden model states to create a hypothesised
 internal behavioural architecture.
 
 This is all a part of the ReCoDE Project at Imperial College London
@@ -24,7 +24,7 @@ use of numpy and pandas to curate data for use with the hmmlearn package.
 
 - 1. Understanding the core concepts of HMMs
 - 2. Curating data and training/validating your own HMM
-- 3. Visualing and understanding your decoded data
+- 3. Visualising and understanding your decoded data
 
 | Task       | Time    |
 | ---------- | ------- |
@@ -37,11 +37,11 @@ use of numpy and pandas to curate data for use with the hmmlearn package.
 
 A basic knowledge of python is needed.
 
-The tutorial will be based in numpy and pandas, two data science pacakages for working with and manipulating data.
-However, previou knowledge will not be neccesary with all steps explained and options to explore parts further
+The tutorial will be based in numpy and pandas, two data science packages for working with and manipulating data.
+However, previous knowledge will not be necessary with all steps explained and options to explore parts further.
 
-No prior knowledge of HMMs is needed or deep understanding of mathmatical modelling. However, if you do want to read more about 
-HMMs I found these resources very useful when starting out:
+No prior knowledge of HMMs is needed, nor deep understanding of mathmatical modelling. However, if you do want to read more about 
+HMMs, I found these resources very useful when starting out:
 Hidden Markov Models - Speech and Language Processing  -> (https://web.stanford.edu/~jurafsky/slp3/A.pdf)
 
 
@@ -72,18 +72,18 @@ Hidden Markov Models - Speech and Language Processing  -> (https://web.stanford.
 The tutorial will be taught through sequential jupyter notebooks which you will clone to your local computer.
 The code will be mainly written out and executed from within the notebooks so you will get a feel for the full workflow to generate
 and test HMMs. A few parts of the code that help the code run or tidy up the plots will be imported from elsewhere in the project (here),
-there is also pre formed python class to train your HMM for use after the tutorial.
+there is also a pre-formed python class to train your HMM for use after the tutorial.
 
 ### Workstation
 
-You'll need something to run and edit the code in the notebooks as we go along, this tutorial was created in [Visual Studio Code](https://code.visualstudio.com/),
+You'll need something to run and edit the code in the notebooks as we go along. This tutorial was created in [Visual Studio Code](https://code.visualstudio.com/),
 but you can use whatever code editor you like.
 
 ### Cloning the repository
 
-If you don't have it already install git to your machine, see [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for details on all OS's 
+If you don't have it already, install git to your machine, see [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for details on all OS's .
 
-Once installed run the following command in the terminal after moving to the location you want it saved. We'll then CD into the created folder.
+Once installed, run the following command in the terminal after moving to the location where you want it saved. We'll then `cd` into the created folder.
 
 ```bash
 git clone https://github.com/ImperialCollegeLondon/ReCoDE-HMMs-for-the-discovery-of-behavioural-states.git HMM_tutorial
@@ -104,7 +104,7 @@ pip install -r requirements.txt
 ```
 
 ## Development
-Setup your environment then install dependencies from `dev-requirements.txt`:
+Set up your environment, then install dependencies from `dev-requirements.txt`:
 
 ```bash
 python -m venv .venv
