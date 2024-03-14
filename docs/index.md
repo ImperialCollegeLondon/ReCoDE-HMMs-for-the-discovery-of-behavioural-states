@@ -7,7 +7,6 @@ your index page as you see fit.
 
 {%
 include-markdown "../README.md"
-
 %}
 
 <!-- Add more files in the `docs/` directory for them to be automatically

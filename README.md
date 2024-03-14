@@ -19,17 +19,12 @@ This is all a part of the ReCoDE Project at Imperial College London
 
 ## Learning Outcomes
 
-Only a basic understanding of python is needed prior to beginning, with the tuorials walking you through the 
+Only a basic understanding of python is needed prior to beginning, with the tutorials walking you through the 
 use of numpy and pandas to curate data for use with the hmmlearn package.
 
 - 1. Understanding the core concepts of HMMs
 - 2. Curating data and training/validating your own HMM
 - 3. Visualing and understanding your decoded data
-
-| Task       | Time    |
-| ---------- | ------- |
-| Reading    | TBD hours |
-| Practising | TBD hours |
 
 ## Requirements
 
@@ -41,7 +36,7 @@ The tutorial will be based in numpy and pandas, two data science pacakages for w
 However, previou knowledge will not be neccesary with all steps explained and options to explore parts further
 
 No prior knowledge of HMMs is needed or deep understanding of mathmatical modelling. However, if you do want to read more about 
-HMMs I found these resources very useful when starting out:
+HMMs I found this resource very useful when starting out:
 Hidden Markov Models - Speech and Language Processing  -> (https://web.stanford.edu/~jurafsky/slp3/A.pdf)
 
 
@@ -58,11 +53,13 @@ Hidden Markov Models - Speech and Language Processing  -> (https://web.stanford.
 
 | Package                  | Version                  |
 | ------------------------ | ------------------------ |
-| numpy                    | >= 1.26.3                |
-| pandas                   | >= 2.1.4                 |
+| numpy                    | >= 1.26.4                |
+| pandas                   | >= 2.2.0                 |
 | hmmlearn                 | >= 0.3.0                 |
-| Matplotlib               | >= XXXXX
-| jupyter                  | >= XXXXX                 |
+| Matplotlib               | >= 3.8.3                 |
+| seaborn                  | >= 0.13.2                |
+| tabulate                 | >= 0.9.0                 |
+| jupyter                  | >= 1.0.0                 |
 
 
 ## Getting Started
@@ -71,8 +68,31 @@ Hidden Markov Models - Speech and Language Processing  -> (https://web.stanford.
 
 The tutorial will be taught through sequential jupyter notebooks which you will clone to your local computer.
 The code will be mainly written out and executed from within the notebooks so you will get a feel for the full workflow to generate
-and test HMMs. A few parts of the code that help the code run or tidy up the plots will be imported from elsewhere in the project (here),
-there is also pre formed python class to train your HMM for use after the tutorial.
+and test HMMs. A few parts of the code that help the code run or tidy up the plots will be imported from elsewhere in the project.
+
+Once you've cloned the repo and installed the dependencies, open the first notebook as highlighted in the project structure below
+
+## Project Structure
+
+```log
+.
+|
+├── data
+|   ├── example_hmm.pkl
+|   ├── training_data_metadata.csv
+|   └── training_data.zip
+├── docs
+├── notebooks
+|   ├── **1_Understanding_HMMs.ipynb**
+|   ├── 2a_Cleaning_your_data.ipynb
+|   ├── 2b_Training.ipynb
+|   ├── 2c_Validating.ipynb
+|   └── 3_Visualising_the_results.ipynb
+└── src
+    ├── hmm_functions.py
+    ├── hmm.py
+    └── misc.py
+```
 
 ### Workstation
 
@@ -153,27 +173,6 @@ should be regenerated so that they are in sync.
 
 [`pip-tools`]: https://github.com/jazzband/pip-tools
 
-
-
-## Project Structure
-
-```log
-.
-|
-├── data
-|   └── training_data.zip
-├── docs
-├── notebooks
-|   ├── 1_Understanding_HMMs.ipynb
-|   ├── 2a_Cleaning_your_data.ipynb
-|   ├── 2b_Training.ipynb
-|   ├── 2c_Validating.ipynb
-|   └── 3_Visualising_the_results.ipynb
-└── src
-    ├── hmm_functions.py
-    ├── hmm.py
-    └── misc.py
-```
 
 <!-- Change this to your License. Make sure you have added the file on GitHub -->
 
