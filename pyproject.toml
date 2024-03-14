@@ -21,6 +21,11 @@ dependencies = [
     "seaborn",
     "jupyter",
     "tabulate",
+    "mkdocs",
+    "mkdocs-include-markdown-plugin",
+    "mkdocs-jupyter",
+    "mkdocs-material",
+    "python-markdown-math"
 ]
 
 [project.optional-dependencies]
@@ -32,12 +37,7 @@ dev = [
     "pytest",
     "pytest-cov",
     "pytest-mypy",
-    "pytest-mock",
-    "mkdocs",
-    "mkdocs-include-markdown-plugin",
-    "mkdocs-jupyter",
-    "mkdocs-material",
-    "python-markdown-math"
+    "pytest-mock"
 
 ]
 
