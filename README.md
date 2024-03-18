@@ -70,6 +70,8 @@ The tutorial will be taught through sequential jupyter notebooks which you will 
 The code will be mainly written out and executed from within the notebooks so you will get a feel for the full workflow to generate
 and test HMMs. A few parts of the code that help the code run or tidy up the plots will be imported from elsewhere in the project.
 
+In the folder src there is a jupyter notebook called notebook_answers.ipynb. This notebook contains the answers to parts of the notebook where you need to write your own code.
+
 Once you've cloned the repo and installed the dependencies, open the first notebook as highlighted by ** in the project structure below
 
 ## Project Structure
