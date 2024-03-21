@@ -13,6 +13,9 @@ HMMs are widely used in multiple fields, including biology, natural language pro
 of future states in a sequence. However, here we will be utilising the hidden model states to create a hypothesied
 internal behavioural architecture.
 
+The tutorial will also run briefly through how to clean and augment a real world dataset using numpy and pandas, 
+so that it's ready for training with hmmlearn.
+
 This is all a part of the ReCoDE Project at Imperial College London
 
 <!-- What should the students going through your exemplar learn -->
@@ -33,7 +36,7 @@ use of numpy and pandas to curate data for use with the hmmlearn package.
 A basic knowledge of python is needed.
 
 The tutorial will be based in numpy and pandas, two data science packages for working with and manipulating data.
-However, previous knowledge will not be necessary with all steps explained and options to explore parts further
+However, previous knowledge will not be necessary with all steps explained and options to explore parts further.
 
 No prior knowledge of HMMs is needed, nor deep understanding of mathmatical modelling. However, if you do want to read more about 
 HMMs, I found this resource very useful when starting out:
@@ -72,7 +75,7 @@ and test HMMs. A few parts of the code that help the code run or tidy up the plo
 
 In the folder src there is a jupyter notebook called notebook_answers.ipynb. This notebook contains the answers to parts of the notebook where you need to write your own code.
 
-Once you've cloned the repo and installed the dependencies, open the first notebook as highlighted by ** in the project structure below
+Once you've cloned the repo and installed the dependencies, open the first notebook as highlighted by the arrow in the structure below.
 
 ## Project Structure
 
@@ -85,7 +88,7 @@ Once you've cloned the repo and installed the dependencies, open the first noteb
 |   └── training_data.zip
 ├── docs
 ├── notebooks
-|   ├── **1_Understanding_HMMs.ipynb**
+|   ├── 1_Understanding_HMMs.ipynb <---
 |   ├── 2a_Cleaning_your_data.ipynb
 |   ├── 2b_Training.ipynb
 |   ├── 2c_Validating.ipynb
