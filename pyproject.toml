@@ -32,6 +32,8 @@ dependencies = [
 dev = [
     "ruff",
     "mypy",
+    "pandas-stubs",
+    "types-tabulate",
     "pip-tools",
     "pre-commit",
     "pytest",
@@ -52,6 +54,12 @@ exclude = [".venv/"]
 [[tool.mypy.overrides]]
 module = "tests.*"
 disallow_untyped_defs = false
+
+[mypy-hmmlearn.*]
+ignore_missing_imports = True
+
+[mypy]
+plugins = numpy.typing.mypy_plugin
 
 [tool.pytest.ini_options]
 addopts = "-v --mypy -p no:warnings --cov=myproject --cov-report=html --doctest-modules --ignore=myproject/__main__.py"

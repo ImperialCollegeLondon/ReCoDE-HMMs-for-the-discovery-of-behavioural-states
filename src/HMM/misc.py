@@ -44,7 +44,7 @@ def rle(x: np.array) -> tuple[np.array, np.array, np.array]:
         return run_values, run_starts, run_lengths
 
 
-def create_chain(states: list[str], length) -> list:
+def create_chain(states: list[str], length: int) -> list:
     """Creates a sequence according to Markovian principles.
 
     Args:

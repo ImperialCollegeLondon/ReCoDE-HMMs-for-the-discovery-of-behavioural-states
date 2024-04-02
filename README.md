@@ -1,8 +1,4 @@
-<!-- Your Project title, make it sound catchy! -->
-
 # Hidden Markov Models for the discovery of behavioural states
-
-<!-- Provide a short description to your project -->
 
 ## Description
 
@@ -17,8 +13,6 @@ The tutorial will also run briefly through how to clean and augment a real world
 so that it's ready for training with hmmlearn.
 
 This is all a part of the ReCoDE Project at Imperial College London
-
-<!-- What should the students going through your exemplar learn -->
 
 ## Learning Outcomes
 
