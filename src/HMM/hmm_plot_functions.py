@@ -12,7 +12,7 @@ from hmmlearn.hmm import CategoricalHMM
 from misc import bin_data, rle
 
 
-def hmm_mean_length(state_array: list[np.int64], delta_t=60, raw=False) -> pd.DataFrame:
+def hmm_mean_length(state_array: list[int], delta_t: int=60, raw: bool=False) -> pd.DataFrame:
     """Finds the mean length of each state run per array/fly returns a dataframe with a state column containing the states id and a mean_length column.
 
     Args:
@@ -23,7 +23,7 @@ def hmm_mean_length(state_array: list[np.int64], delta_t=60, raw=False) -> pd.Da
     Returns:
         If raw is False then a grouped dataframe is returned, if True the raw lengths as a dataframe
     """ # noqa: E501
-    assert isinstance(raw, bool)
+
     delta_t_mins = delta_t / 60
 
     V, S, L = rle(state_array)
@@ -42,7 +42,7 @@ def hmm_mean_length(state_array: list[np.int64], delta_t=60, raw=False) -> pd.Da
         return gb_bout
 
 
-def hmm_pct_state(state_array: np.array, time: np.array, total_states: list[int], avg_window=30) -> pd.DataFrame:
+def hmm_pct_state(state_array: np.array, time: np.array, total_states: list[int], avg_window: int=30) -> pd.DataFrame:
     """Finds the moving average of each state.
 
     Args:
@@ -74,7 +74,7 @@ def hmm_pct_state(state_array: np.array, time: np.array, total_states: list[int]
     return df
 
 
-def hmm_decode(d: pd.DataFrame, h: CategoricalHMM, b: int, var: str, fun: str, t="t") -> tuple[list,list]:
+def hmm_decode(d: pd.DataFrame, h: CategoricalHMM, b: int, var: str, fun: str, t: str="t") -> tuple[list[int],pd.Series]:
     """Decode a time series dataframe with its trained HMM.
 
     Args:
@@ -109,7 +109,7 @@ def hmm_decode(d: pd.DataFrame, h: CategoricalHMM, b: int, var: str, fun: str, t
 
 
 def plot_hmm_overtime(data: pd.DataFrame, hmm: CategoricalHMM, variable: str,
-                    labels: list[str], colours: list[str], wrapped=False, tbin=60, func="max", avg_window=30) -> None:
+                    labels: list[str], colours: list[str], wrapped: bool=False, tbin: int=60, func: str="max", avg_window: int=30) -> None:
     """Creates a plot of the pct of all states. The y-axis-liklihood of being in a sleep state, x-axis-time in hours.
 
     Args:
@@ -134,7 +134,7 @@ def plot_hmm_overtime(data: pd.DataFrame, hmm: CategoricalHMM, variable: str,
             "The number of labels do not match the number of states in the model"
         )
 
-    states_list, time_list = hmm_decode(data, hmm, tbin, variable, func)
+    states_list, time_list = hmm_decode(d = data, h = hmm, b = tbin, var = variable, fun = func)
 
     data = pd.DataFrame()
     for states, t in zip(states_list, time_list):
@@ -181,7 +181,7 @@ def plot_hmm_overtime(data: pd.DataFrame, hmm: CategoricalHMM, variable: str,
     plt.show()
 
 
-def plot_hmm_quantify(data, hmm, variable, labels, colours, tbin=60, func="max") -> None:
+def plot_hmm_quantify(data: pd.DataFrame, hmm: CategoricalHMM, variable: str, labels: list[str], colours: list[str], tbin: int=60, func: str="max") -> None:
     """Creates a boxplot of pct in each state.
 
     Args:
@@ -255,7 +255,7 @@ def plot_hmm_quantify(data, hmm, variable, labels, colours, tbin=60, func="max")
         )
 
 
-def plot_hmm_quantify_length(data, hmm, variable, labels, colours, tbin=60, func="max") -> None:
+def plot_hmm_quantify_length(data: pd.DataFrame, hmm: CategoricalHMM, variable: str, labels: list[str], colours: list[str], tbin: int=60, func: str="max") -> None:
     """Creates a boxplot of the mean length of each state.
 
     Args:
@@ -329,7 +329,7 @@ def plot_hmm_quantify_length(data, hmm, variable, labels, colours, tbin=60, func
         )
 
 
-def plot_hmm_raw(data, hmm, variable, colours, tbin=60, func="max") -> None:
+def plot_hmm_raw(data: pd.DataFrame, hmm: CategoricalHMM, variable: str, colours: list[str], tbin: int=60, func: str="max") -> None:
     """Creates a plot showing the raw output from a hmm decoder.
 
     Args:
