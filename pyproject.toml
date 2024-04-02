@@ -20,12 +20,7 @@ dependencies = [
     "matplotlib",
     "seaborn",
     "jupyter",
-    "tabulate",
-    "mkdocs",
-    "mkdocs-include-markdown-plugin",
-    "mkdocs-jupyter",
-    "mkdocs-material",
-    "python-markdown-math"
+    "tabulate"
 ]
 
 [project.optional-dependencies]
@@ -39,7 +34,12 @@ dev = [
     "pytest",
     "pytest-cov",
     "pytest-mypy",
-    "pytest-mock"
+    "pytest-mock",
+    "mkdocs",
+    "mkdocs-include-markdown-plugin",
+    "mkdocs-jupyter",
+    "mkdocs-material",
+    "python-markdown-math"
 
 ]
 
@@ -50,16 +50,11 @@ warn_unreachable = true
 warn_unused_ignores = true
 disallow_untyped_defs = true
 exclude = [".venv/"]
+plugins = ["numpy.typing.mypy_plugin"]
 
 [[tool.mypy.overrides]]
 module = "tests.*"
 disallow_untyped_defs = false
-
-[mypy-hmmlearn.*]
-ignore_missing_imports = True
-
-[mypy]
-plugins = numpy.typing.mypy_plugin
 
 [tool.pytest.ini_options]
 addopts = "-v --mypy -p no:warnings --cov=myproject --cov-report=html --doctest-modules --ignore=myproject/__main__.py"
