@@ -35,12 +35,11 @@ dev = [
     "pytest-cov",
     "pytest-mypy",
     "pytest-mock",
-    "mkdocs",
-    "mkdocs-include-markdown-plugin",
-    "mkdocs-jupyter",
-    "mkdocs-material",
-    "python-markdown-math"
-
+    "mkdocs==1.5.3",
+    "mkdocs-include-markdown-plugin==3.7.1",
+    "mkdocs-jupyter==0.24.5",
+    "mkdocs-material==9.4.6",
+    "python-markdown-math==0.8"
 ]
 
 [tool.mypy]

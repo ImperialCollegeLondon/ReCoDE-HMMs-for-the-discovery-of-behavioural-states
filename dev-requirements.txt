@@ -31,8 +31,6 @@ beautifulsoup4==4.12.3
     # via nbconvert
 bleach==6.1.0
     # via nbconvert
-bracex==2.4
-    # via wcmatch
 build==1.0.3
     # via pip-tools
 certifi==2024.2.2
@@ -226,14 +224,13 @@ mistune==3.0.2
 mkdocs==1.5.3
     # via
     #   ReCoDE-HMMs-for-the-discovery-of-behavioural-states (pyproject.toml)
-    #   mkdocs-include-markdown-plugin
     #   mkdocs-jupyter
     #   mkdocs-material
-mkdocs-include-markdown-plugin==6.0.4
+mkdocs-include-markdown-plugin==3.7.1
     # via ReCoDE-HMMs-for-the-discovery-of-behavioural-states (pyproject.toml)
-mkdocs-jupyter==0.24.6
+mkdocs-jupyter==0.24.5
     # via ReCoDE-HMMs-for-the-discovery-of-behavioural-states (pyproject.toml)
-mkdocs-material==9.5.13
+mkdocs-material==9.4.6
     # via
     #   ReCoDE-HMMs-for-the-discovery-of-behavioural-states (pyproject.toml)
     #   mkdocs-jupyter
@@ -504,8 +501,6 @@ virtualenv==20.25.0
     # via pre-commit
 watchdog==4.0.0
     # via mkdocs
-wcmatch==8.5.1
-    # via mkdocs-include-markdown-plugin
 wcwidth==0.2.13
     # via prompt-toolkit
 webcolors==1.13
