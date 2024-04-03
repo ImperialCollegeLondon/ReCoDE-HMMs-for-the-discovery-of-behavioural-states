@@ -1,4 +1,4 @@
-# Hidden Markov Models for the discovery of behavioural states
+o# Hidden Markov Models for the discovery of behavioural states
 
 ## Description
 
@@ -171,9 +171,6 @@ When dependencies are upgraded, both `requirements.txt` and `dev-requirements.tx
 should be regenerated so that they are in sync.
 
 [`pip-tools`]: https://github.com/jazzband/pip-tools
-
-
-<!-- Change this to your License. Make sure you have added the file on GitHub -->
 
 ## License
 

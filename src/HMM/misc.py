@@ -44,7 +44,7 @@ def rle(x: np.array) -> tuple[np.array, np.array, np.array]:
         return run_values, run_starts, run_lengths
 
 
-def create_chain(states: list[str], length: int) -> list:
+def create_chain(states: list[str], length: int) -> list[str]:
     """Creates a sequence according to Markovian principles.
 
     Args:
@@ -59,7 +59,7 @@ def create_chain(states: list[str], length: int) -> list:
         f"The length of states sould be 3, not {len(states)}"
     )
 
-    mat_trans = [[0.7, 0.05, 0.25], [0.35, 0.5, 0.15], [0.05, 0.3, 0.65]]
+    mat_trans = [[0.7, 0.05, 0.25], [0.35, 0.5, 0.15], [0.05, 0.3, 0.65]] # type: ignore
 
     i = 0
 
@@ -109,7 +109,7 @@ def bin_data(data: pd.DataFrame, column: str, bin_column: str, function: str, bi
     return bout_gb
 
 
-def _hmm_table(start_prob, trans_prob, emission_prob, state_names, observable_names):
+def _hmm_table(start_prob: np.array, trans_prob: np.array, emission_prob: np.array, state_names: list[str], observable_names: list[str]) -> None:
     """Prints a formatted table of the probabilities from a hmmlearn MultinomialHMM object."""
     df_s = pd.DataFrame(start_prob)
     df_s = df_s.T

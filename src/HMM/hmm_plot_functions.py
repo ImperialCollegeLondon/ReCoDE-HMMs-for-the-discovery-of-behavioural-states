@@ -23,7 +23,6 @@ def hmm_mean_length(state_array: list[int], delta_t: int=60, raw: bool=False) ->
     Returns:
         If raw is False then a grouped dataframe is returned, if True the raw lengths as a dataframe
     """ # noqa: E501
-
     delta_t_mins = delta_t / 60
 
     V, S, L = rle(state_array)
@@ -56,7 +55,7 @@ def hmm_pct_state(state_array: np.array, time: np.array, total_states: list[int]
     """
     states_dict = {}
 
-    def moving_average(a, n):
+    def moving_average(a: np.array, n: int) -> np.array:
         ret = np.cumsum(a, dtype=float)
         ret[n:] = ret[n:] - ret[:-n]
         return ret[n - 1 :] / n
@@ -283,7 +282,7 @@ def plot_hmm_quantify_length(data: pd.DataFrame, hmm: CategoricalHMM, variable: 
 
     d = pd.DataFrame()
     for states in states_list:
-        length = hmm_mean_length(states, delta_t=tbin)
+        length = hmm_mean_length(states, delta_t=tbin) # type: ignore
         d = pd.concat([d, length], ignore_index=True)
 
     d["State"] = d["state"].map(label_dict)
