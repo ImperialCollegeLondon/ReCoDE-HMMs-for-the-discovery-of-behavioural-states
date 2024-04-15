@@ -12,6 +12,9 @@ internal behavioural architecture.
 The tutorial will also run briefly through how to clean and augment a real world dataset using numpy and pandas,
 so that it's ready for training with hmmlearn.
 
+The information in tutorial was primarily designed around the user completing reading along and completing a jupyter notebook in python.
+But can followed loosely from just these pages. If reading along ignore any sections asking to complete any code (or complete it in your mind).
+
 This is all a part of the ReCoDE Project at Imperial College London
 
 ## Learning Outcomes
@@ -30,7 +33,6 @@ use of numpy and pandas to curate data for use with the hmmlearn package.
 A basic knowledge of python is needed.
 
 The tutorial will be based in numpy and pandas, two data science packages for working with and manipulating data.
-However, previous knowledge will not be necessary with all steps explained and options to explore parts further.
 
 No prior knowledge of HMMs is needed, nor deep understanding of mathmatical modelling. However, if you do want to read more about
 HMMs, I found this resource very useful when starting out:
@@ -118,56 +120,7 @@ source .venv/bin/activate # with Powershell on Windows: `.venv\Scripts\Activate.
 pip install -r requirements.txt
 ```
 
-## Development
-
-Set up your environment then install dependencies from `dev-requirements.txt`:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate # with Powershell on Windows: `.venv\Scripts\Activate.ps1`
-```
-
-```bash
-pip install -r dev-requirements.txt
-```
-
-Install the git hooks:
-
-```bash
-pre-commit install
-```
-
-### Dependencies
-
-Dependencies are managed using the [`pip-tools`] tool chain.
-
-Unpinned dependencies are specified in `pyproject.toml`. Pinned versions are
-then produced with:
-
-```sh
-pip-compile pyproject.toml
-```
-
-To add/remove packages edit `pyproject.toml` and run the above command. To
-upgrade all existing dependencies run:
-
-```sh
-pip-compile --upgrade pyproject.toml
-```
-
-Dependencies for developers are listed separately as optional, with the pinned versions
-being saved to `dev-requirements.txt` instead.
-
-`pip-tools` can also manage these dependencies by adding extra arguments, e.g.:
-
-```sh
-pip-compile -o dev-requirements.txt --extra=dev pyproject.toml
-```
-
-When dependencies are upgraded, both `requirements.txt` and `dev-requirements.txt`
-should be regenerated so that they are in sync.
-
-[`pip-tools`]: https://github.com/jazzband/pip-tools
+You're now ready to jump into the first notebook. Open up the notebook 1_Understanding_HMMs.ipynb.
 
 ## License
 
