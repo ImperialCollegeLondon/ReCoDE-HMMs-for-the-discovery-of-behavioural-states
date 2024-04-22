@@ -71,7 +71,7 @@ Once you've cloned the repo and installed the dependencies, open the first noteb
 
 ## Project Structure
 
-```log
+```
 .
 |
 ├── data
